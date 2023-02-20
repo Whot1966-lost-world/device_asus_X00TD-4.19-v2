@@ -103,3 +103,10 @@ ro.surface_flinger.set_idle_timer_ms=9000
 
 # WiFi Display
 persist.debug.wfd.enable=1
+
+# ZenParts
+ro.audio.soundfx.dirac=true
+persist.audio.dirac.speaker=true
+persist.dirac.acs.controller=qem
+persist.dirac.acs.ignore_error=1
+persist.dirac.acs.storeSettings=1
