@@ -1,2 +1,7 @@
 type cdfinger_data_file, file_type, data_file_type, core_data_file_type;
 type sysfs_iio_devices, sysfs_type, fs_type;
+
+# ZenParts
+type kcal_dev, sysfs_type, fs_type;
+type sysfs_shgain, sysfs_type, fs_type;
+type sysfs_mgain, sysfs_type, fs_type;

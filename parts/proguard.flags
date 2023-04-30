@@ -1,0 +1,15 @@
+-keep class org.lineageos.settings.soundcontrol.* {
+  *;
+}
+
+-keep class org.lineageos.settings.dirac.* {
+  *;
+}
+
+-keep class org.lineageos.settings.smartcharging.* {
+  *;
+}
+
+-keep class org.lineageos.settings.display.* {
+  *;
+}
