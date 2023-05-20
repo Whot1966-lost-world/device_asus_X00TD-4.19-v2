@@ -15,9 +15,6 @@
 /dev/goodix_fp                                                                                  u:object_r:fingerprintd_device:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.[1-2]-service-X00T u:object_r:hal_fingerprint_default_exec:s0
 
-# FPS Info
-/sys/devices/virtual/graphics/fb0/measured_fps                                                  u:object_r:sysfs_fps:s0
-
 # I/O
 # This node is already labelled by QCOM but Lineage overrides it with sysfs_io_sched_tunable label
 # Since qti_init_shell needs to write to it, LOS's private label isn't accessible by our vendor
