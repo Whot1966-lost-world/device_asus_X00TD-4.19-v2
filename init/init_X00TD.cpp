@@ -1,6 +1,7 @@
 /*
    Copyright (c) 2016, The CyanogenMod Project
    Copyright (c) 2019, The LineageOS Project
+
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
    met:
@@ -13,6 +14,7 @@
     * Neither the name of The Linux Foundation nor the names of its
       contributors may be used to endorse or promote products derived
       from this software without specific prior written permission.
+
    THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
    WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
@@ -26,34 +28,28 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <cstdlib>
 #include <fstream>
-#include <string.h>
-#include <sys/sysinfo.h>
-#include <unistd.h>
+#include <vector>
 
+#include <android-base/logging.h>
 #include <android-base/properties.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
-
-#include "vendor_init.h"
-#include "property_service.h"
+#include <sys/sysinfo.h>
 
 using android::base::GetProperty;
-using std::string;
 
-void property_override(string prop, string value)
-{
-    auto pi = (prop_info*) __system_property_find(prop.c_str());
+void property_override(char const prop[], char const value[], bool add = true) {
+    prop_info* pi;
 
-    if (pi != nullptr)
-        __system_property_update(pi, value.c_str(), value.size());
-    else
-        __system_property_add(prop.c_str(), prop.size(), value.c_str(), value.size());
+    pi = (prop_info*)__system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else if (add)
+        __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
-void NFC_check()
-{
+void NFC_check() {
     // Check NFC
     std::ifstream infile("/proc/NFC_CHECK");
     std::string check;
@@ -63,13 +59,26 @@ void NFC_check()
         property_override("ro.boot.product.hardware.sku", "X00T");
 }
 
-void vendor_load_properties()
-{
-    NFC_check();
-    
-   // Safetynet Workaround
+void load_vendor_props() {
+    property_override("bluetooth.device.default_name", "Zenfone Max Pro M1");
+    property_override("ro.product.brand", "asus");
+    property_override("ro.product.manufacturer", "asus");
+    property_override("ro.product.device", "ASUS_X00T_2");
+    property_override("ro.vendor.product.device", "ASUS_X00T_2");
+    property_override("ro.product.name", "WW_X00TD");
+    property_override("ro.vendor.product.name", "WW_X00TD");
+    property_override("ro.build.fingerprint", "asus/WW_X00TD/ASUS_X00T_2:9/PKQ1/16.2017.2009.087-20200826:user/release-keys");
+    property_override("ro.vendor.build.fingerprint", "asus/WW_X00TD/ASUS_X00T_2:9/PKQ1/16.2017.2009.087-20200826:user/release-keys");
+    property_override("ro.bootimage.build.fingerprint", "asus/WW_X00TD/ASUS_X00T_2:9/PKQ1/16.2017.2009.087-20200826:user/release-keys");
+    property_override("ro.build.description", "sdm660_64-user 9 PKQ1 43 release-keys");
+    property_override("vendor.usb.product_string", "Zenfone Max Pro M1");
     property_override("ro.boot.verifiedbootstate", "green");
-    property_override("ro.build.description", "cheetah-user 13 TQ2A.230505.002 9891397 release-keys");
-    property_override("ro.build.fingerprint", "google/cheetah/cheetah:13/TQ2A.230505.002/9891397:user/release-keys");
-    property_override("ro.system.build.fingerprint", "google/cheetah/cheetah:13/TQ2A.230505.002/9891397:user/release-keys");
+    property_override("ro.boot.verifiedstate", "green");
+}
+
+void vendor_load_properties() {
+    if (access("/system/bin/recovery", F_OK) != 0) {
+        load_vendor_props();
+    }
+    NFC_check();
 }
