@@ -38,7 +38,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-	android.hardware.biometrics.fingerprint@2.1-service-X00T
+	android.hardware.biometrics.fingerprint@2.1-service-X00TD
 
 # Camera
 PRODUCT_PACKAGES += \

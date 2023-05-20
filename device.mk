@@ -67,7 +67,7 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
 # Call the proprietary setup
-$(call inherit-product, vendor/asus/X00T/X00T-vendor.mk)
+$(call inherit-product, vendor/asus/X00TD/X00TD-vendor.mk)
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -355,7 +355,7 @@ PRODUCT_PACKAGES += \
     
 # Recovery
 PRODUCT_PACKAGES += \
-    librecovery_updater_X00T
+    librecovery_updater_X00TD
 
 # RIL
 PRODUCT_PACKAGES += \

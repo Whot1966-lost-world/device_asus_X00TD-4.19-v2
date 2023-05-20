@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/asus/X00T
+DEVICE_PATH := device/asus/X00TD
 BOARD_VENDOR := asus
 
 # ANT+
@@ -118,7 +118,7 @@ BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_SOURCE := kernel/asus/sdm636
-TARGET_KERNEL_CONFIG := X00T_defconfig
+TARGET_KERNEL_CONFIG := X00TD_defconfig
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_KERNEL_VERSION := 4.19
 
@@ -170,7 +170,7 @@ BOARD_USES_QCOM_HARDWARE := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 
 # Releasetools
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_X00T
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_X00TD
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 # RIL
@@ -206,4 +206,4 @@ WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
--include vendor/asus/X00T/BoardConfigVendor.mk
+-include vendor/asus/X00TD/BoardConfigVendor.mk

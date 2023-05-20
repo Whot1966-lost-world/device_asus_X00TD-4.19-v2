@@ -22,7 +22,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk
 # Inherit some common PixelReloaded stuff
 $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
-# Inherit from X00T device
+# Inherit from X00TD device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
 # Bootanimation
@@ -32,15 +32,15 @@ TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_GAPPS_ARCH := arm64
 
 PRODUCT_BRAND := ASUS
-PRODUCT_DEVICE := X00T
+PRODUCT_DEVICE := X00TD
 PRODUCT_MANUFACTURER := ASUS
-PRODUCT_NAME := aosp_X00T
+PRODUCT_NAME := aosp_X00TD
 PRODUCT_MODEL := Zenfone Max Pro M1
 
 PRODUCT_GMS_CLIENTID_BASE := android-asus
 
 TARGET_VENDOR := asus
-TARGET_VENDOR_PRODUCT_NAME := X00T
+TARGET_VENDOR_PRODUCT_NAME := X00TD
 PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="X00T-user 13 TQ2A.230505.002 9891397 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
