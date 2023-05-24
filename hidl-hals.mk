@@ -75,8 +75,6 @@ PRODUCT_PACKAGES += \
 
 # FM
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.fm@1.0:64 \
-    vendor.qti.hardware.fm@1.0.vendor:64 \
     android.hardware.broadcastradio@1.0-impl
     
 # GPS
